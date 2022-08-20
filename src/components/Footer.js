@@ -13,12 +13,12 @@ const Footer = () => {
   }, [dispatch])
   return (
     <footer className="flex text-zinc-200 bg-slate-800 p-10 justify-around">
-      <div>
+      <div className="flex gap-5">
         <p>{data.headquarters.address}</p>
         <p>{data.headquarters.city}</p>
         <p>{data.headquarters.state}</p>
       </div>
-      <div className="flex flex-col">
+      <div className="flex gap-5">
         <a href={data.links.website} target="_blank">
           Website
         </a>
