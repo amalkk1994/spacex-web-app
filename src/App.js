@@ -6,6 +6,7 @@ import Launches from "./pages/Launches"
 import Missions from "./pages/Missions"
 import Ships from "./pages/Ships"
 import Container from "./Layouts/Container"
+import Footer from "./components/Footer"
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           </Route>
         </Routes>
       </div>
+      <Footer />
     </div>
   )
 }
