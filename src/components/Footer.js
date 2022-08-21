@@ -18,7 +18,7 @@ const Footer = () => {
     dispatch(getInfo())
   }, [dispatch])
   return (
-    <footer className="flex text-zinc-200 bg-slate-800 p-10 justify-between">
+    <footer className="flex text-zinc-200 bg-slate-800 p-10 justify-between absolute bottom-0 w-full">
       <div className="flex gap-1">
         <FaGlobeAmericas className="self-center" />
         <p>{data.headquarters?.address},</p>

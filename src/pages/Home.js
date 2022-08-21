@@ -21,7 +21,7 @@ const Home = () => {
       <p className="text-2xl text-center text-slate-700 font-medium">
         {data.summary}
       </p>
-      <div className="grid grid-cols-4 mt-20 gap-10">
+      <div className="grid grid-cols-4 mt-20 gap-10 pb-32">
         <FieldValueCard field="Founder" value={data.founder} />
         <FieldValueCard field="Founded In" value={data.founded} />
         <FieldValueCard field="Employees" value={data.employees} />

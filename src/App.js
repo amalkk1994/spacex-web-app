@@ -10,7 +10,7 @@ import Footer from "./components/Footer"
 
 function App() {
   return (
-    <div>
+    <div className="absolute min-h-screen w-screen">
       <header>
         <NavBar />
       </header>
