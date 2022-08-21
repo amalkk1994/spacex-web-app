@@ -1,10 +1,10 @@
 import React from "react"
+import FieldValueItem from "./FieldValueItem"
 
 const FieldValueCard = (props) => {
   return (
     <div className="p-10 bg-slate-200">
-      <p className="text-2xl font-semibold text-center">{props.field}</p>
-      <p className="text-xl text-center">{props.value}</p>
+      <FieldValueItem field={props.field} value={props.value} />
     </div>
   )
 }

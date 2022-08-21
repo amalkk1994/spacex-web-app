@@ -1,16 +1,18 @@
 import React from "react"
 import { Pagination } from "@material-ui/lab"
 
-const AppPagination = () => {
+const AppPagination = (props) => {
+  /*
   const handleChange = (e) => {
     console.log("Page selected:" + e.target.textContent)
   }
+  */
 
   return (
-    <div>
+    <div className="flex justify-center pb-32">
       <Pagination
         onChange={(e) => {
-          handleChange(e)
+          props.onChange(e.target.textContent)
         }}
         count={10}
       />
