@@ -1,4 +1,4 @@
-export const debounce = (func, delay) => {
+const debounce = (func, delay) => {
   let debounceTimer
   return function () {
     const context = this
@@ -7,3 +7,5 @@ export const debounce = (func, delay) => {
     debounceTimer = setTimeout(() => func.apply(context, args), delay)
   }
 }
+
+export { debounce }

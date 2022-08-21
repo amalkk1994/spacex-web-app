@@ -4,6 +4,7 @@ import { getAllLaunches } from "../redux/launchReducer"
 import { useDispatch, useSelector } from "react-redux"
 import LaunchContainer from "../components/LaunchContainer"
 import { FaSearch } from "react-icons/fa"
+import { debounce } from "../utils/UtilFunctions"
 
 const Launches = () => {
   const dispatch = useDispatch()
@@ -64,7 +65,7 @@ const Launches = () => {
         name="search"
         placeholder="search launch by mission"
         className="p-2 bg-slate-200"
-        onChange={handleOnChange}
+        onChange={debounce(handleOnChange, 3000)}
       />
       <button className="p-4">
         <FaSearch />
