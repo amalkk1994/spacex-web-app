@@ -29,8 +29,8 @@ const Launches = () => {
 
   function handleOnChange(e) {
     console.log("key press", e.target.value)
-    setFltData(
-      data.filter((dataItem) => {
+    if (e.target.value) {
+      let filteredData = data.filter((dataItem) => {
         if (
           dataItem.mission_name
             .toLowerCase()
@@ -41,9 +41,15 @@ const Launches = () => {
           return false
         }
       })
-    )
+      console.log("filtered Data", filteredData)
+      setFltData(filteredData)
+      setPageData(filteredData.slice(0, 14))
+    } else {
+      console.log("default filtered Data", data)
+      setFltData(data)
+      setPageData(data.slice(0, 14))
+    }
     // setPageCount(Math.ceil(fltData.length / 15))
-    setPageData(fltData.slice(0, 14))
   }
 
   useEffect(() => {
