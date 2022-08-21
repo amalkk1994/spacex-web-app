@@ -19,6 +19,19 @@ const getLaunches = createAsyncThunk("api/launches", ({ pageNo, limit }) => {
     })
 })
 
+const getAllLaunches = createAsyncThunk("api/alllaunches", (setFltData) => {
+  return axios
+    .get("https://api.spacexdata.com/v3/launches")
+    .then((response) => {
+      console.log("API All Launch Data", response.data)
+      setFltData(response.data.slice(0, 14))
+      return response.data
+    })
+    .catch((err) => {
+      console.log("ërror from launch API", err)
+    })
+})
+
 const launchSlice = createSlice({
   name: "launch",
   initialState: {
@@ -37,8 +50,18 @@ const launchSlice = createSlice({
     [getLaunches.rejected]: (state) => {
       state.loading = false
     },
+    [getAllLaunches.fulfilled]: (state, action) => {
+      state.loading = false
+      state.data = action.payload
+    },
+    [getAllLaunches.pending]: (state, action) => {
+      state.loading = true
+    },
+    [getAllLaunches.rejected]: (state) => {
+      state.loading = false
+    },
   },
 })
 
-export { getLaunches }
+export { getLaunches, getAllLaunches }
 export default launchSlice.reducer
