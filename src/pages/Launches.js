@@ -8,7 +8,9 @@ import { FaSearch } from "react-icons/fa"
 const Launches = () => {
   const dispatch = useDispatch()
   const data = useSelector((state) => state.launch.data)
-  const [fltData, setFltData] = useState(data.slice(0, 14))
+  const [fltData, setFltData] = useState()
+  const [pageData, setPageData] = useState(data.slice(0, 14))
+  // const [pageCount, setPageCount] = useState()
 
   console.log("data launch from lauches", data)
 
@@ -17,7 +19,7 @@ const Launches = () => {
     let limit = 15
     let startIndex = (pageNo - 1) * limit
     let endIndex = startIndex + limit
-    setFltData(data.slice(startIndex, endIndex))
+    setPageData(fltData.slice(startIndex, endIndex))
     window.scrollTo({
       top: 0,
       left: 0,
@@ -25,25 +27,28 @@ const Launches = () => {
     })
   }
 
-  useEffect(() => {
-    /*
-    axios
-      .get(`https://api.spacexdata.com/v3/launches`)
-      .then((response) => {
-        console.log("data initial", response.data)
-        setPageCount(Math.floor(response.data.length / 15))
-        return response.data
+  function handleOnChange(e) {
+    console.log("key press", e.target.value)
+    setFltData(
+      data.filter((dataItem) => {
+        if (
+          dataItem.mission_name
+            .toLowerCase()
+            .includes(e.target.value.toLowerCase())
+        ) {
+          return true
+        } else {
+          return false
+        }
       })
-      .catch((err) => console.log("error:" + err))
-      */
-    dispatch(getAllLaunches(setFltData))
-  }, [dispatch])
+    )
+    // setPageCount(Math.ceil(fltData.length / 15))
+    setPageData(fltData.slice(0, 14))
+  }
 
-  /*
   useEffect(() => {
-    dispatch(getLaunches({ pageNo: 1, limit: 15 }))
+    dispatch(getAllLaunches({ setFltData, setPageData }))
   }, [dispatch])
-*/
 
   return (
     <div>
@@ -51,16 +56,17 @@ const Launches = () => {
       <input
         type="search"
         name="search"
-        placeholder="search"
+        placeholder="search launch by mission"
         className="p-2 bg-slate-200"
+        onChange={handleOnChange}
       />
       <button className="p-4">
         <FaSearch />
       </button>
-      <LaunchContainer data={fltData} />
+      <LaunchContainer data={pageData} />
       <AppPagination
         onChange={handlePagination}
-        pageCount={Math.ceil(data.length / 15)}
+        pageCount={Math.ceil(fltData?.length / 15)}
       />
     </div>
   )

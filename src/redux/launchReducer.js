@@ -19,18 +19,23 @@ const getLaunches = createAsyncThunk("api/launches", ({ pageNo, limit }) => {
     })
 })
 
-const getAllLaunches = createAsyncThunk("api/alllaunches", (setFltData) => {
-  return axios
-    .get("https://api.spacexdata.com/v3/launches")
-    .then((response) => {
-      console.log("API All Launch Data", response.data)
-      setFltData(response.data.slice(0, 14))
-      return response.data
-    })
-    .catch((err) => {
-      console.log("ërror from launch API", err)
-    })
-})
+const getAllLaunches = createAsyncThunk(
+  "api/alllaunches",
+  ({ setFltData, setPageData }) => {
+    return axios
+      .get("https://api.spacexdata.com/v3/launches")
+      .then((response) => {
+        console.log("API All Launch Data", response.data)
+        setFltData(response.data)
+        setPageData(response.data.slice(0, 14))
+        //  setPageCount(Math.ceil(response.data.length / 15))
+        return response.data
+      })
+      .catch((err) => {
+        console.log("ërror from launch API", err)
+      })
+  }
+)
 
 const launchSlice = createSlice({
   name: "launch",
