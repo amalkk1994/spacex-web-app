@@ -4,6 +4,7 @@ import { getLaunches } from "../redux/launchReducer"
 import { useDispatch, useSelector } from "react-redux"
 import LaunchContainer from "../components/LaunchContainer"
 import axios from "axios"
+import { FaSearch } from "react-icons/fa"
 
 const Launches = () => {
   const dispatch = useDispatch()
@@ -34,6 +35,15 @@ const Launches = () => {
   return (
     <div>
       <h1 className="text-4xl font-black text-center">LAUNCHES</h1>
+      <input
+        type="search"
+        name="search"
+        placeholder="search"
+        className="p-2 bg-slate-200"
+      />
+      <button className="p-4">
+        <FaSearch />
+      </button>
       <LaunchContainer data={data} />
       <AppPagination onChange={handlePagination} pageCount={pageCount} />
     </div>

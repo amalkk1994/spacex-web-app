@@ -7,14 +7,18 @@ const LaunchCard = ({ launchItem }) => {
       <h1 className="text-3xl font-semibold text-center">
         {launchItem.mission_name}
       </h1>
-      <div className="grid grid-cols-4 gap-2 mt-6 items-center">
+      <div className="grid grid-cols-6 gap-2 mt-6 items-center">
         <FieldValueItem
           field="Flight Number"
           value={launchItem.flight_number}
         />
         <FieldValueItem field="Launch year" value={launchItem.launch_year} />
         <FieldValueItem
-          className="col-span-4"
+          field="Launch Site"
+          value={launchItem.launch_site.site_name}
+        />
+        <FieldValueItem
+          className="col-span-6"
           field="Details"
           value={
             launchItem.details || "No Details available regarding this mission"
