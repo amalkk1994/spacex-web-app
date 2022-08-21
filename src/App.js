@@ -11,10 +11,10 @@ import Footer from "./components/Footer"
 function App() {
   return (
     <div className="absolute min-h-screen w-screen">
-      <header>
+      <header className="fixed top-0 w-full">
         <NavBar />
       </header>
-      <div>
+      <div className="pt-24">
         <Routes>
           <Route path="/" element={<Container />}>
             <Route index element={<Home />} />
