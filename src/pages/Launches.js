@@ -3,8 +3,8 @@ import AppPagination from "../components/AppPagination"
 import { getAllLaunches } from "../redux/launchReducer"
 import { useDispatch, useSelector } from "react-redux"
 import LaunchContainer from "../components/LaunchContainer"
-import { FaSearch } from "react-icons/fa"
 import { debounce } from "../utils/UtilFunctions"
+import SearchBar from "../components/SearchBar"
 
 const Launches = () => {
   const dispatch = useDispatch()
@@ -60,16 +60,10 @@ const Launches = () => {
   return (
     <div>
       <h1 className="text-4xl font-black text-center">LAUNCHES</h1>
-      <input
-        type="search"
-        name="search"
+      <SearchBar
         placeholder="search launch by mission"
-        className="p-2 bg-slate-200"
         onChange={debounce(handleOnChange, 3000)}
       />
-      <button className="p-4">
-        <FaSearch />
-      </button>
       <LaunchContainer data={pageData} />
       <AppPagination
         onChange={handlePagination}
