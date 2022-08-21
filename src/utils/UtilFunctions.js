@@ -20,12 +20,12 @@ function paginationLogic(pageNo, setPageData, fltData) {
   })
 }
 
-function onChangeLogic(e, data, setFltData, setPageData) {
+function onChangeLogic(e, data, setFltData, setPageData, searchField) {
   console.log("key press", e.target.value)
   if (e.target.value) {
     let filteredData = data.filter((dataItem) => {
       if (
-        dataItem.mission_name
+        dataItem[searchField]
           .toLowerCase()
           .includes(e.target.value.toLowerCase())
       ) {

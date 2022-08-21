@@ -9,6 +9,7 @@ import {
 import SearchBar from "../components/SearchBar"
 import AppPagination from "../components/AppPagination"
 import { getAllMissions } from "../redux/missionReducer"
+import MissionContainer from "../components/MissionContainer"
 
 const Missions = () => {
   const dispatch = useDispatch()
@@ -25,7 +26,7 @@ const Missions = () => {
 
   function handleOnChange(e) {
     console.log("key press", e.target.value)
-    onChangeLogic(e, data, setFltData, setPageData)
+    onChangeLogic(e, data, setFltData, setPageData, "mission_name")
   }
 
   useEffect(() => {
@@ -39,7 +40,7 @@ const Missions = () => {
         placeholder="search launch by mission"
         onChange={debounce(handleOnChange, 3000)}
       />
-      <div>{pageData.toString()}</div>
+      <MissionContainer data={pageData} />
       <AppPagination
         onChange={handlePagination}
         pageCount={Math.ceil(fltData?.length / 15)}
