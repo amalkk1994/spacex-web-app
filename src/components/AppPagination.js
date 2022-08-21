@@ -14,7 +14,7 @@ const AppPagination = (props) => {
         onChange={(e) => {
           props.onChange(e.target.textContent)
         }}
-        count={10}
+        count={props.pageCount}
       />
     </div>
   )
