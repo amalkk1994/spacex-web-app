@@ -14,7 +14,7 @@ function App() {
       <header className="fixed top-0 w-full">
         <NavBar />
       </header>
-      <div className="pt-24">
+      <div className="pt-24 sm:pb-24">
         <Routes>
           <Route path="/" element={<Container />}>
             <Route index element={<Home />} />

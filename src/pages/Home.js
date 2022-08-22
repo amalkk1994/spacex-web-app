@@ -6,8 +6,8 @@ import FieldValueCard from "../components/FieldValueCard"
 const Home = () => {
   const dispatch = useDispatch()
   const data = useSelector((state) => state.info.data)
-  const error = useSelector((state) => state.info.error)
-  const loading = useSelector((state) => state.info.loading)
+  //const error = useSelector((state) => state.info.error)
+  // const loading = useSelector((state) => state.info.loading)
 
   useEffect(() => {
     dispatch(getInfo())
@@ -21,7 +21,7 @@ const Home = () => {
       <p className="text-2xl text-center text-slate-700 font-medium">
         {data.summary}
       </p>
-      <div className="grid grid-cols-4 mt-20 gap-10 pb-32">
+      <div className="grid grid-cols-4 mt-20 gap-10 pb-32 md:grid-cols-1">
         <FieldValueCard field="Founder" value={data.founder} />
         <FieldValueCard field="Founded In" value={data.founded} />
         <FieldValueCard field="Employees" value={data.employees} />
