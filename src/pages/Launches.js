@@ -3,7 +3,11 @@ import AppPagination from "../components/AppPagination"
 import { getAllLaunches } from "../redux/launchReducer"
 import { useDispatch, useSelector } from "react-redux"
 import LaunchContainer from "../components/LaunchContainer"
-import { debounce } from "../utils/UtilFunctions"
+import {
+  debounce,
+  paginationLogic,
+  onChangeLogic,
+} from "../utils/UtilFunctions"
 import SearchBar from "../components/SearchBar"
 
 const Launches = () => {
@@ -17,39 +21,12 @@ const Launches = () => {
 
   function handlePagination(pageNo) {
     // dispatch(getLaunches({ pageNo: pageNo, limit: 15 }))
-    let limit = 15
-    let startIndex = (pageNo - 1) * limit
-    let endIndex = startIndex + limit
-    setPageData(fltData.slice(startIndex, endIndex))
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    })
+    paginationLogic(pageNo, setPageData, fltData)
   }
 
   function handleOnChange(e) {
     console.log("key press", e.target.value)
-    if (e.target.value) {
-      let filteredData = data.filter((dataItem) => {
-        if (
-          dataItem.mission_name
-            .toLowerCase()
-            .includes(e.target.value.toLowerCase())
-        ) {
-          return true
-        } else {
-          return false
-        }
-      })
-      console.log("filtered Data", filteredData)
-      setFltData(filteredData)
-      setPageData(filteredData.slice(0, 14))
-    } else {
-      console.log("default filtered Data", data)
-      setFltData(data)
-      setPageData(data.slice(0, 14))
-    }
+    onChangeLogic(e, data, setFltData, setPageData, "mission_name")
     // setPageCount(Math.ceil(fltData.length / 15))
   }
 
