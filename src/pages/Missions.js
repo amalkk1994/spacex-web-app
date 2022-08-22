@@ -37,7 +37,7 @@ const Missions = () => {
     <div>
       <h1 className="text-4xl font-black text-center">MISSIONS</h1>
       <SearchBar
-        placeholder="search launch by mission"
+        placeholder="search Mission by mission name"
         onChange={debounce(handleOnChange, 3000)}
       />
       <MissionContainer data={pageData} />

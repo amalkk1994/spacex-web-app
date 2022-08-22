@@ -9,8 +9,8 @@ import { FaGlobeAmericas } from "react-icons/fa"
 const Footer = () => {
   const dispatch = useDispatch()
   const data = useSelector((state) => state.info.data)
-  const error = useSelector((state) => state.info.error)
-  const loading = useSelector((state) => state.info.loading)
+  // const error = useSelector((state) => state.info.error)
+  //  const loading = useSelector((state) => state.info.loading)
 
   console.log("data footer:" + data)
 
@@ -18,7 +18,7 @@ const Footer = () => {
     dispatch(getInfo())
   }, [dispatch])
   return (
-    <footer className="flex text-zinc-200 bg-slate-800 p-10 justify-between absolute bottom-0 w-full">
+    <footer className="flex text-zinc-200 bg-slate-800 p-10 justify-between absolute bottom-0 w-screen">
       <div className="flex gap-1">
         <FaGlobeAmericas className="self-center" />
         <p>{data.headquarters?.address},</p>
@@ -27,13 +27,13 @@ const Footer = () => {
       </div>
       <p>&copy; SpaceX</p>
       <div className="flex gap-5">
-        <a href={data.links?.website} target="_blank">
+        <a href={data.links?.website} target="_blank" rel="noreferrer">
           <FaGlobe />
         </a>
-        <a href={data.links?.flickr} target="_blank">
+        <a href={data.links?.flickr} target="_blank" rel="noreferrer">
           <FaFlickr />
         </a>
-        <a href={data.links?.twitter} target="_blank">
+        <a href={data.links?.twitter} target="_blank" rel="noreferrer">
           <FaTwitter />
         </a>
       </div>

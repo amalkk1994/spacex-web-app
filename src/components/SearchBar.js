@@ -8,7 +8,7 @@ const SearchBar = (props) => {
         type="search"
         name="search"
         placeholder={props.placeholder}
-        className="p-2 bg-slate-200"
+        className="p-2 bg-slate-200 w-72 mt-10"
         onChange={(e) => {
           props.onChange(e)
         }}
